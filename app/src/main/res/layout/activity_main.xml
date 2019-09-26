@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5D6E6A"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="231dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="#26F0D7"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/recordtime"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:gravity="left"
+            android:text="@string/real_time_recorded_data"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/inputedoutput"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="center"
+            android:text="Date"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/TimeOfRecord"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="center"
+            android:text="Time"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/Humidityrecord"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="center"
+            android:text="Humidity"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tempraturerecord"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="center"
+            android:text="Temprature"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="455dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="6dp"
+        android:background="#FBFBFB">
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+</RelativeLayout>
