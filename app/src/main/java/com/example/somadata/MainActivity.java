@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
                 lineDataSet1.setDrawCircles(false);
                 lineDataSet1.setColors(Color.RED);
-
+ //ss
             }
 
             @Override
