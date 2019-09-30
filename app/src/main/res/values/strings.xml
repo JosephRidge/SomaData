@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">SomaData</string>
-    <string name="real_time_recorded_data">Real Time recorded Data</string>
+    <string name="real_time_recorded_data">Parameters</string>
 </resources>
