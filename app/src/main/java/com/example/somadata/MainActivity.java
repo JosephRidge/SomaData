@@ -34,9 +34,9 @@ import java.util.Objects;
     public class MainActivity extends AppCompatActivity {
 
         LineChart lineChart ;
-        TextView result,tempresult, trix,logresult,humidity, soil_moisture, temperature,optimus;
-        ArrayList<Entry>yDATA,xAxis,ydata,hdata,tdata;
-       private List<PayloadOutputs> humidityValues;
+        TextView  trix,humidity, soil_moisture, temperature;
+        ArrayList<Entry>yDATA,ydata,yData;
+
 
 
         private static final String LOG_TAG;
@@ -47,7 +47,7 @@ import java.util.Objects;
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference humid = database.getReference("Member");///il travaille
 
-        DatabaseReference humido =  database.getReference("payload/-LplVF-Tt8knbu4T09Kg/metadata/data_rate");////il travaille
+        DatabaseReference humido =  database.getReference("payload/-LplVF-Tt8knbu4T09Kg/metadata/data_rate");////il trava ille
 
         @Override
 
@@ -58,62 +58,55 @@ import java.util.Objects;
             temperature = findViewById(R.id.tempraturerecord);
             soil_moisture =  findViewById(R.id.inputedoutput);
 
-           // getData();
-            //plot_graph();
             lineChart = (LineChart) findViewById(R.id.lineChart);
 
-           /* humid.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-
-                    Log.d(LOG_TAG,"Value is :  "+ dataSnapshot);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });*/
-
-                Log.d(LOG_TAG,"Before attaching the listener ");
-            DatabaseReference classy = database.getReference( ).child("TechShamba");
-           classy.addValueEventListener(new ValueEventListener() {
+            Log.d(LOG_TAG,"Before attaching the listener ");
+            DatabaseReference classy = database.getReference().child("payload");
+            classy.addValueEventListener(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                   float i=0;
+                   Integer i=0;
+               // NOTE!!  THE ARRAY SHOULD BE INTIALIZED OUTSIDE THE LOOP
+                   yDATA = new ArrayList<>(); //Initialize the graph
+                   ydata =new ArrayList<>();
+                   yData = new ArrayList<>();
                    for (DataSnapshot ds:dataSnapshot.getChildren()) {
                        i = i+1;
-                       yDATA = new ArrayList<>(); //Initialize the graph
+
                        Object x = ds.child("payload_fields/humidity").getValue();  //get value
                        Object y = ds.child("payload_fields/temperature").getValue();//get value
                        Object z = ds.child("payload_fields/soilMoisture").getValue();//get value
-                       String hm = String.valueOf(y);
+                       String hm = String.valueOf(x);//CONVERSION TO STRING THEN FLOAT
+                       String temp = String.valueOf(y);
+                       String soilM = String.valueOf(z);
+
                        Float hum = Float.parseFloat(hm);
-                       yDATA.add(new Entry(i ,hum));
+                       Float tempe= Float.parseFloat(temp);
+                       Float soilmoi = Float.parseFloat(soilM);
+
+                        //LOG OUTPUT OF DATASNAPSHOT
 
                        Log.d(LOG_TAG, "Humidity: " + x);//confirm its success by logging it
                        Log.d(LOG_TAG, "Temperature: " + y);//confirm its success by logging it
                        Log.d(LOG_TAG, "SoilMositure: " + z + "\n");//confirm its success by logging it
-
-                      //String hm = String.valueOf(x);//converting to String from Long
-                       Log.d(LOG_TAG, "HMIS PRINTED :  " + hm); //printing it out to log cat
-                     //  Float hum = Float.parseFloat(hm); //parsing it into float
+                       Log.d(LOG_TAG, "HMIS PRINTED :  " + hm); //printing it out to log cat --TESTING PURPOSES
                        Log.d(LOG_TAG, "HUMIDITY RESULT" + hum); //printing it out to the logcat
 
-                       String SV = "100"; //TESTING PURPOSES
                        yDATA.add(new Entry(i, hum)); //ADD VALUES TO GRAPH
-
+                       ydata.add(new Entry(i, tempe));
+                       yData.add(new Entry(i, soilmoi));
                       }
-                           final LineDataSet lineDataSet1 = new LineDataSet(yDATA, "Temp.");
-                           LineData data = new LineData(lineDataSet1);
-                           lineChart.setData(data);
-                           lineChart.notifyDataSetChanged();
-                           lineChart.invalidate();
 
-                           lineDataSet1.setDrawCircles(false);
-                           lineDataSet1.setColors(Color.GRAY);}
+                        final LineDataSet lineDataSet1 = new LineDataSet(yDATA, "Hum.");
+                        LineData data = new LineData(lineDataSet1);
 
+                        lineChart.setData(data);
+
+                        lineChart.notifyDataSetChanged();
+                        lineChart.invalidate();
+
+                        lineDataSet1.setDrawCircles(false);
+                        lineDataSet1.setColors(Color.BLUE);}
 
                @Override
                public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -123,6 +116,23 @@ import java.util.Objects;
 
                }
            });
+
+            //TESTING PURPOSES
+            trix = (TextView)findViewById(R.id.TimeOfRecord) ;
+            humido.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String Val = dataSnapshot.getValue(String.class);
+                    trix.setText(String.valueOf(Val));
+                    Log.d(LOG_TAG ,"Value is: "+Val);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });//texting purposes
         }
     }
 
