@@ -16,7 +16,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:background="#26F0D7"
+        android:background="#793FB582"
         android:orientation="vertical">
 
         <TextView
@@ -31,7 +31,7 @@
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/inputedoutput"
+            android:id="@+id/inputDate"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:gravity="center"
@@ -39,15 +39,15 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/TimeOfRecord"
+            android:id="@+id/timeOfRecord"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:gravity="center"
-            android:text="Time"
+            android:text="Current Time"
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/Humidityrecord"
+            android:id="@+id/humidityRecord"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:gravity="center"
@@ -55,7 +55,7 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/tempraturerecord"
+            android:id="@+id/tempRecord"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:gravity="center"
