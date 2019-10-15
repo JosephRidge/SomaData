@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">SomaData</string>
+    <string name="app_name" Color="#8B1A1A">TechShamba</string>
     <string name="real_time_recorded_data">Parameters</string>
+    <string name="temp">Temperature</string>
+    <string name="hum">Humidity</string>
+    <string name="soim">Soil Moisture</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Location </string>
 </resources>
