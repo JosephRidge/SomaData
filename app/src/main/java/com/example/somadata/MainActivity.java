@@ -87,34 +87,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(LOG_TAG,"Errr!!! ");
             }
         });
-   /*
-   mygrapgh.addValueEventListener(new ValueEventListener() {
-       @Override
-       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-           ydata = new ArrayList<>();
-           float i = 0;
-           for (DataSnapshot ds: dataSnapshot.getChildren()){
-               i=i++;
-               String value = Objects.requireNonNull(ds.child("temperature").getValue()).toString();
-               float Sensorvue= Float.parseFloat(value);
-               yDATA.add(new Entry(i, Sensorvue));
-           }
-           final LineDataSet lineDataSet2 = new LineDataSet(ydata,"Temp.");
-           LineData dta = new LineData(lineDataSet2);
-           lineChart.setData(dta);
-           lineChart.notifyDataSetChanged();
-           lineChart.invalidate();
-
-           lineDataSet2.setColor(Color.GREEN);
-           lineDataSet2.setDrawCircles(false);
-       }
-
-       @Override
-       public void onCancelled(@NonNull DatabaseError databaseError) {
-
-       }
-   });
-*/
 
    result = (TextView)findViewById(R.id.TimeOfRecord);
 
